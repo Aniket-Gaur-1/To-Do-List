@@ -7,17 +7,17 @@ function App() {
 
   function handleChange(e) {
     setTask(e.target.value);
-
-    console.log(e.target.name, e.target.value);
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    setMainTask([...mainTask].concat(task));
+    if (task === "") {
+      alert("plase add task");
+    } else {
+      e.preventDefault();
+      setMainTask([...mainTask].concat(task));
+    }
 
     setTask("");
-    console.log(mainTask);
-    // setMainTask([]);
   }
   function deleteTask(i) {
     const newtodo = mainTask.filter((_, taskindex) => taskindex !== i);
@@ -26,7 +26,6 @@ function App() {
   return (
     <div className="box">
       <form className="container" onSubmit={handleSubmit}>
-        (
         <input
           type="text"
           placeholder="Enter a Task"
@@ -36,9 +35,9 @@ function App() {
           onChange={handleChange}
           id={task.length}
         />
-        ? <button className="btn">Add Task</button>) : alert("PLease eneter
-        tasks")
+        <button className="btn">Add Task</button>
       </form>
+
       <div>
         <ul>
           {mainTask.map((t, i) => (
