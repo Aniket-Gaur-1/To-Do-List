@@ -10,14 +10,13 @@ function App() {
   }
 
   function handleSubmit(e) {
+    e.preventDefault();
     if (task === "") {
       alert("plase add task");
     } else {
-      e.preventDefault();
       setMainTask([...mainTask].concat(task));
+      setTask("");
     }
-
-    setTask("");
   }
   function deleteTask(i) {
     const newtodo = mainTask.filter((_, taskindex) => taskindex !== i);
